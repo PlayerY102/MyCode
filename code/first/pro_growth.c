@@ -9,7 +9,7 @@ long long seek(int n){
         return outp[n];
     }
     else{
-        outp[n]=seek(n-1)+seek(n-2)-seek(n-12)-seek(n-20);
+        outp[n]=seek(n-1)+seek(n-2)-seek(n-12);
         return outp[n];
     }
 }
@@ -19,6 +19,6 @@ int main(){
     scanf("%d",&t);
     while(t--){
         scanf("%d",&n);
-        printf("%lld\n",seek(n));
+        printf("%lld\n",seek(n)-seek(n-20));
     }
 }
