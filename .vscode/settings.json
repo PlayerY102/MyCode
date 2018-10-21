@@ -7,5 +7,9 @@
         "c": "cd $dir && gcc $fileName -o $fileNameWithoutExt.o && $dir$fileNameWithoutExt.o",
         "cpp":"cd $dir && g++ $fileName -o $fileNameWithoutExt.o && $dir$fileNameWithoutExt.o"
     },
-    "code-runner.respectShebang":false
+    "code-runner.respectShebang": false,
+    "files.associations": {
+        "queue": "cpp",
+        "vector": "cpp"
+    }
 }
