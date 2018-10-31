@@ -42,6 +42,27 @@
                     "ignoreFailures": true,
                 }
             ]
+        },
+        {
+            "name": "windows gdb c++",
+            "preLaunchTask": "build c++ in windows",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${fileDirname}/${fileBasenameNoExtension}.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "externalConsole": true,
+            "MIMode": "gdb",
+            "internalConsoleOptions": "openOnSessionStart",
+            "miDebuggerPath":"D:/code_tools/mingw/bin/gdb.exe",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for GDB",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": false
+                }
+            ],
         }
     ]
 }
