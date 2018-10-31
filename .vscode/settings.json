@@ -11,5 +11,7 @@
     "files.associations": {
         "queue": "cpp",
         "vector": "cpp"
-    }
+    },
+    "C_Cpp.intelliSenseEngineFallback": "Enabled",
+    "C_Cpp.errorSquiggles": "Enabled"
 }
