@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <algorithm>
 #include <memory.h>
-#define max_size 107
+#define max_size 507
 using namespace std;
 int p[max_size][max_size];
 int t[max_size][max_size];
