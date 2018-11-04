@@ -1,21 +1,22 @@
 #include<stdio.h>
 #include<algorithm>
 using namespace std;
+
 int main()
 {
     int n;
     while(scanf("%d",&n)!=EOF){
-        int temp=0;
-        int dp=0;
-        int now;
+        long long temp=0;
+        long long dp=0;
+        long long now;
         for(int i=1;i<=n;i++){
-            scanf("%d",&now);
+            scanf("%lld",&now);
             dp=max(now,dp+now);
             if(dp>temp){
                 temp=dp;
             }
         }
-        printf("%d\n",temp);
+        printf("%lld\n",temp);
     }
     return 0;
 }
