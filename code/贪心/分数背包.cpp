@@ -1,52 +1,51 @@
-#include<stdio.h>
-#include<algorithm>
+#include <stdio.h>
+#include <algorithm>
+#define maxsize 100007
 using namespace std;
-struct iron{
-    int w;
-    int v;
-    double perv;
+double dp[maxsize];
+struct liq{
+    int c;
+    int l;
+    double per;
 };
-bool cmp(struct iron a,struct iron b){
-    if(a.perv>b.perv){
-        return true;
-    }
-    return false;
+struct liq inp[maxsize];
+bool cmp(struct liq a,struct liq b){
+    return a.per>b.per;
 }
-struct iron inp[10007];
 int main()
 {
-    int g,k,n;
-    while(scanf("%d %d %d",&g,&k,&n)!=EOF){
-        double dp=0;
-        int total=0;
-        for(int i=0;i<k;i++){
-            scanf("%d %d",&inp[i].w,&inp[i].v);
-            inp[i].perv=(double)inp[i].v/(double)inp[i].w;
+    int m,k,s;
+    while(scanf("%d %d %d",&m,&k,&s)!=EOF){
+        for(int i=0;i<=s;i++){
+            dp[i]=0;
         }
-        sort(inp,inp+k,cmp);
+        for(int i=0;i<m;i++){
+            scanf("%d %d",&inp[i].c,&inp[i].l);
+            inp[i].per=(double)inp[i].l/(double)inp[i].c;
+        }
+        while(k--){
+            int w,r;
+            scanf("%d %d",&w,&r);
+            for(int i=s;i>=w;i--){
+                dp[i]=max(dp[i],dp[i-w]+r);
+            }
+        }
+        sort(inp,inp+m,cmp);
+        int total=s;
+        while(total>0&&dp[total]==dp[total-1]){
+            total--;
+        }
         int index=0;
-        while(total<g){
-            if(index>=k){
-                break;
-            }
-            int left=g-total;
-            if(inp[index].w<=left){
-                dp+=inp[index].v;
-                total+=inp[index].w;
-            }
-            else{
-                dp+=inp[index].perv*left;
-                total+=left;
-            }
+        double ans=dp[s];
+        while(index<m && total+inp[index].c<=s){
+            total+=inp[index].c;
+            ans+=inp[index].l;
             index++;
         }
-        if(dp>=n){
-            printf("Yuri is the master!\n");
+        if(index<m){
+            ans+=(s-total)*inp[index].per;
         }
-        else{
-           printf("%.3lf\n",(double)n-dp); 
-        }
-        
+        printf("%.1lf\n",ans);
     }
     return 0;
 }
