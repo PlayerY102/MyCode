@@ -58,3 +58,63 @@ int dinic(){
     }
     return ans;
 }
+int edge_now=0;
+void insert_edge(int from,int to,int w){
+    points[from].push_back(edge_now);
+    points[to].push_back(edge_now^1);
+    edge_to[edge_now]=to;
+    edge_w[edge_now]=w;
+    edge_to[edge_now^1]=from;
+    edge_w[edge_now^1]=0;
+    edge_now+=2;
+}
+int m,n;
+int getnum(int x,int y){
+    return (x-1)*n+y;
+}
+void insert_round (int i,int j){
+    int INF=(unsigned int)-1>>1;
+    int me=getnum(i,j);
+    if(j-1>=1){
+        int to=getnum(i,j-1);
+        insert_edge(me,to,INF);
+    }
+    if(j+1<=n){
+        int to=getnum(i,j+1);
+        insert_edge(me,to,INF);
+    }
+    if(i-1>=1){
+        int to=getnum(i-1,j);
+        insert_edge(me,to,INF);
+    }
+    if(i+1<=m){
+        int to=getnum(i+1,j);
+        insert_edge(me,to,INF);
+    }
+}
+int main()
+{
+    
+    int total=0;
+    scanf("%d %d",&m,&n);
+    s=0;
+    t=m*n+1;
+    for(int i=1;i<=m;i++){
+        for(int j=1;j<=n;j++){
+            int w;
+            scanf("%d",&w);
+            total+=w;
+            int num=getnum(i,j);
+            if((i+j)%2==0){
+                insert_edge(s,num,w);
+                insert_round(i,j);
+            }
+            else{
+                insert_edge(num,t,w);
+            }
+        }
+    }
+    printf("%d\n",total-dinic());
+    //system("pause");
+    return 0;
+}

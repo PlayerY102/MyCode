@@ -34,8 +34,20 @@ int maxmatch(int n,int m){
     }
     return ans;
 }
-int init(int n){
-    for(int i=0;i<=n;i++){
-        points[i].clear();
+int main()
+{
+    int current=0;
+    int n,m;
+    scanf("%d %d",&n,&m);
+    for(int i=1;i<=n;i++){
+        int k;
+        scanf("%d",&k);
+        for(int j=1;j<=k;j++){
+            int temp;
+            scanf("%d",&temp);
+            points[i].push_back(temp);
+        }
     }
+    printf("%d\n",maxmatch(n,m));
+    return 0;
 }
