@@ -4,17 +4,14 @@
             "name": "Win32",
             "includePath": [
                 "${workspaceRoot}",
-                "D:/code_tools/mingw/include",
-                "D:/code_tools/mingw/lib/gcc/mingw32/6.3.0/include",
-                "D:/code_tools/mingw/lib/gcc/mingw32/6.3.0/include/c++",
-                "D:/code_tools/mingw/lib/gcc/mingw32/6.3.0/include/c++/mingw32",
-                "D:/code_tools/mingw/lib/gcc/mingw32/6.3.0/include/c++/backward",
-                "D:/code_tools/mingw/lib/gcc/mingw32/6.3.0/include/c++/tr1"
+                "D:/code_tools/mingw64/include",
+                "D:\\code_tools\\mingw64\\lib\\gcc\\x86_64-w64-mingw32\\8.1.0\\include"
+
             ],
             "defines": [
                 "_DEBUG"
             ],
-            "compilerPath": "D:/code_tools/mingw/bin/g++.exe",
+            "compilerPath": "D:/code_tools/mingw64/bin/g++.exe",
             "cStandard": "c11",
             "cppStandard": "c++17",
             "intelliSenseMode": "gcc-x64",
