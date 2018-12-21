@@ -1,8 +1,7 @@
 #include<stdio.h>
 #include<algorithm>
 using namespace std;
-int inp[10000];
-int outp[10000];
+int inp[10007];
 int n,m;
 bool judge(int mid){
     int les=0;
@@ -26,11 +25,13 @@ bool judge(int mid){
     return true;
 }
 void show(int mid){
+    int les=0;
     int les_count=0;
     for(int i=0;i<=m;i++){
-        if(les_count+inp[i]>mid){
+        if(les_count+inp[i]>mid||les+m-i<=n-2){
             printf("%d ",les_count);
             les_count=inp[i];
+            les++;
         }
         else{
             les_count+=inp[i];
@@ -41,11 +42,13 @@ void show(int mid){
 int main()
 {
     while(scanf("%d%d",&n,&m)!=EOF){
+        int sum=0;
         for(int i=0;i<=m;i++){
             scanf("%d",inp+i);
+            sum+=inp[i];
         }
         int left=0;
-        int right=inp[m-1];
+        int right=sum;
         int mid=(left+right)/2;
         while(left<=right){
             if(judge(mid)){

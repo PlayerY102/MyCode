@@ -7,8 +7,8 @@
 using namespace std;
 #define maxN 10007
 vector<int>points[maxN];
-int edge_w[maxN*2];
-int edge_to[maxN*2];
+int edge_w[maxN*10];
+int edge_to[maxN*10];
 int s,t;
 int point_depth[maxN];
 int cur[maxN];
@@ -69,4 +69,17 @@ void insert_edge(int from,int to,int w){
     edge_to[edge_now^1]=from;
     edge_w[edge_now^1]=0;
     edge_now+=2;
+}
+int main()
+{
+    int N,M;
+    scanf("%d%d%d%d",&N,&M,&s,&t);
+    while(M--){
+        int from,to,weight;
+        scanf("%d%d%d",&from,&to,&weight);
+        insert_edge(from,to,weight);
+    }
+    printf("%d\n",dinic());
+    system("pause");
+    return 0;
 }
