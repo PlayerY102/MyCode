@@ -40,7 +40,7 @@ double find_cloest(int l,int r){
     }
     sort(temp.begin(),temp.end(),cmp_y);
     for(int i=0,size=temp.size();i<size;i++){
-        for(int j=i+1;j<size;j++){
+        for(int j=i+1;j<size && j<=i+6;j++){
             int y_dist=(points[temp[j]].y-points[temp[i]].y);
             if(y_dist>ans){
                 break;
